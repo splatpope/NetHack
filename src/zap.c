@@ -5015,6 +5015,7 @@ destroy_one_item(struct obj *obj, int osym, int dmgtyp)
                 skip++;
                 break;
             }
+            rchances = obj->cursed ? 1 : obj->blessed ? 9 : 3;
 #if 0
             if (obj == g.current_wand) {  skip++;  break;  }
 #endif
