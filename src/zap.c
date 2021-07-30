@@ -4940,12 +4940,13 @@ static void
 destroy_one_item(struct obj *obj, int osym, int dmgtyp)
 {
     long i, cnt, quan;
-    int dmg, xresist, skip, dindx;
+    int dmg, xresist, skip, dindx, rchances;
     const char *mult;
     boolean physical_damage;
 
     physical_damage = FALSE;
     xresist = skip = 0;
+    rchances = 3;
     /* lint suppression */
     dmg = dindx = 0;
     quan = 0L;
@@ -5034,7 +5035,7 @@ destroy_one_item(struct obj *obj, int osym, int dmgtyp)
         if (obj->in_use)
             --quan; /* one will be used up elsewhere */
         for (i = cnt = 0L; i < quan; i++)
-            if (!rn2(3))
+            if (!rn2(rchances))
                 cnt++;
 
         if (!cnt)
